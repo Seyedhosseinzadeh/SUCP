@@ -18,4 +18,4 @@ Please cite our paper if you use our datasets or implementations:
 This repository contains the implementation of Leveraging Social Influence based on Users Activity Centers for Point-of-Interest Recommendation presented in the IPM 2021 paper. 
 
 # Contact
-If you have any questions, do not hesitate to contact us at `kosar.seyedhosseinzadeh@znu.ac.ir` or `kosar.seyedhosseinzadeh@gmail.com`, we will be happy to assist.
+If you have any questions, do not hesitate to contact us at `kosar.seyedhosseinzadeh@znu.ac.ir` or   '   `, we will be happy to assist.
