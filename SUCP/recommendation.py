@@ -153,10 +153,10 @@ def main(result_dir, temp_dir):
     np.random.shuffle(all_uids)
 
     # list for different ks
-    precision_5, recall_5, nDCG_5, MAP_5 = [], [], [], []
-    precision_10, recall_10, nDCG_10, MAP_10 = [], [], [], []
-    precision_15, recall_15, nDCG_15, MAP_15 = [], [], [], []
-    precision_20, recall_20, nDCG_20, MAP_20 = [], [], [], []
+    precision_5, recall_5, nDCG_5, MAP_5 = '', '', '', ''
+    precision_10, recall_10, nDCG_10, MAP_10 = '', '', '', ''
+    precision_15, recall_15, nDCG_15, MAP_15 = '', '', '', ''
+    precision_20, recall_20, nDCG_20, MAP_20 = '', '', '', ''
 
     for cnt, uid in enumerate(all_uids):
         if uid in ground_truth:
@@ -172,25 +172,25 @@ def main(result_dir, temp_dir):
             actual = ground_truth[uid]
 
             # calculate the average of different k
-            precision_5.append(precisionk(actual, predicted[:5]))
-            recall_5.append(recallk(actual, predicted[:5]))
-            nDCG_5.append(ndcgk(actual, predicted[:5]))
-            MAP_5.append(mapk(actual, predicted[:5], 5))
+            precision_5=(precisionk(actual, predicted[:5]))
+            recall_5=(recallk(actual, predicted[:5]))
+            nDCG_5=(ndcgk(actual, predicted[:5]))
+            MAP_5=(mapk(actual, predicted[:5], 5))
 
-            precision_10.append(precisionk(actual, predicted[:10]))
-            recall_10.append(recallk(actual, predicted[:10]))
-            nDCG_10.append(ndcgk(actual, predicted[:10]))
-            MAP_10.append(mapk(actual, predicted[:10], 10))
+            precision_10=(precisionk(actual, predicted[:10]))
+            recall_10=(recallk(actual, predicted[:10]))
+            nDCG_10=(ndcgk(actual, predicted[:10]))
+            MAP_10=(mapk(actual, predicted[:10], 10))
 
-            precision_15.append(precisionk(actual, predicted[:15]))
-            recall_15.append(recallk(actual, predicted[:15]))
-            nDCG_15.append(ndcgk(actual, predicted[:15]))
-            MAP_15.append(mapk(actual, predicted[:15], 15))
+            precision_15=(precisionk(actual, predicted[:15]))
+            recall_15=(recallk(actual, predicted[:15]))
+            nDCG_15=(ndcgk(actual, predicted[:15]))
+            MAP_15=(mapk(actual, predicted[:15], 15))
 
-            precision_20.append(precisionk(actual, predicted[:20]))
-            recall_20.append(recallk(actual, predicted[:20]))
-            nDCG_20.append(ndcgk(actual, predicted[:20]))
-            MAP_20.append(mapk(actual, predicted[:20], 20))
+            precision_20=(precisionk(actual, predicted[:20]))
+            recall_20=(recallk(actual, predicted[:20]))
+            nDCG_20=(ndcgk(actual, predicted[:20]))
+            MAP_20=(mapk(actual, predicted[:20], 20))
 
             print(cnt, uid, "pre@10:", np.mean(precision_10), "rec@10:", np.mean(recall_10))
 
