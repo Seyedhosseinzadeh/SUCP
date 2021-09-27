@@ -11,11 +11,12 @@ from lib.TimeAwareMF import TimeAwareMF
 from lib.metrics import precisionk, recallk, ndcgk, mapk
 from lib.LocationFriendshipBookmarkColoringAlgorithm import LocationFriendshipBookmarkColoringAlgorithm
 
+
 def read_friend_data():
     social_data = open(social_file, 'r').readlines()
     social_matrix = np.zeros((user_num, user_num))
     for eachline in social_data:
-        uid1, uid2 = eachline.strip().split()
+        uid1, uid2, _, _, _, _, _ = eachline.strip().split()
         uid1, uid2 = int(uid1), int(uid2)
         social_matrix[uid1, uid2] = 1.0
         social_matrix[uid2, uid1] = 1.0
@@ -30,6 +31,7 @@ def read_poi_coos():
         lid, lat, lng = int(lid), float(lat), float(lng)
         poi_coos[lid] = (lat, lng)
     return poi_coos
+
 
 def read_training_data2():
     train_data = open(train_file, 'r').readlines()
@@ -89,7 +91,7 @@ def read_training_data():
         elif hour == 1:
             sparse_training_matrix_LT[uid, lid] = freq
 
-    print ("Data Loader Finished!")
+    print("Data Loader Finished!")
     return sparse_training_matrices, sparse_training_matrix, sparse_training_matrix_WT, sparse_training_matrix_LT, training_tuples, training_matrix
 
 
@@ -172,25 +174,25 @@ def main(result_dir, temp_dir):
             actual = ground_truth[uid]
 
             # calculate the average of different k
-            precision_5=(precisionk(actual, predicted[:5]))
-            recall_5=(recallk(actual, predicted[:5]))
-            nDCG_5=(ndcgk(actual, predicted[:5]))
-            MAP_5=(mapk(actual, predicted[:5], 5))
+            precision_5 = (precisionk(actual, predicted[:5]))
+            recall_5 = (recallk(actual, predicted[:5]))
+            nDCG_5 = (ndcgk(actual, predicted[:5]))
+            MAP_5 = (mapk(actual, predicted[:5], 5))
 
-            precision_10=(precisionk(actual, predicted[:10]))
-            recall_10=(recallk(actual, predicted[:10]))
-            nDCG_10=(ndcgk(actual, predicted[:10]))
-            MAP_10=(mapk(actual, predicted[:10], 10))
+            precision_10 = (precisionk(actual, predicted[:10]))
+            recall_10 = (recallk(actual, predicted[:10]))
+            nDCG_10 = (ndcgk(actual, predicted[:10]))
+            MAP_10 = (mapk(actual, predicted[:10], 10))
 
-            precision_15=(precisionk(actual, predicted[:15]))
-            recall_15=(recallk(actual, predicted[:15]))
-            nDCG_15=(ndcgk(actual, predicted[:15]))
-            MAP_15=(mapk(actual, predicted[:15], 15))
+            precision_15 = (precisionk(actual, predicted[:15]))
+            recall_15 = (recallk(actual, predicted[:15]))
+            nDCG_15 = (ndcgk(actual, predicted[:15]))
+            MAP_15 = (mapk(actual, predicted[:15], 15))
 
-            precision_20=(precisionk(actual, predicted[:20]))
-            recall_20=(recallk(actual, predicted[:20]))
-            nDCG_20=(ndcgk(actual, predicted[:20]))
-            MAP_20=(mapk(actual, predicted[:20], 20))
+            precision_20 = (precisionk(actual, predicted[:20]))
+            recall_20 = (recallk(actual, predicted[:20]))
+            nDCG_20 = (ndcgk(actual, predicted[:20]))
+            MAP_20 = (mapk(actual, predicted[:20], 20))
 
             print(cnt, uid, "pre@10:", np.mean(precision_10), "rec@10:", np.mean(recall_10))
 
@@ -214,10 +216,12 @@ def main(result_dir, temp_dir):
 
 
 if __name__ == '__main__':
-    data_name = sys.argv[1]
-    beta_value = sys.argv[2]
+    data_name = sys.argv[1]  # which data to run
+    beta_value = sys.argv[2]  # which beta value to use
+    overlap_value = sys.argv[3]  # which overlap value to use for social relationships
 
-    print ("======= RUNNING FOR BETA = ", beta_value, ", DATASET = ", data_name, "========")
+    print("======= RUNNING FOR BETA = ", beta_value, ", DATASET = ", data_name, ", SOCIAL CHECKIN OVERLAP = ",
+          overlap_value, "========")
 
     if data_name == 'gowalla':
         data_dir = "../Dataset/Gowalla/"
@@ -228,7 +232,8 @@ if __name__ == '__main__':
         tune_file = data_dir + "Gowalla_tune.txt"
         test_file = data_dir + "Gowalla_test.txt"
         poi_file = data_dir + "Gowalla_poi_coos.txt"
-        social_file = data_dir + "Gowalla_social_relations.txt"
+        # social_file = data_dir + "Gowalla_social_relations.txt"
+        social_file = data_dir + "/social_overlap/Social_train_more{}_gowalla.txt".format(overlap_value)
     else:
         data_dir = "../Dataset/Yelp/"
 
@@ -238,7 +243,8 @@ if __name__ == '__main__':
         tune_file = data_dir + "Yelp_tune.txt"
         test_file = data_dir + "Yelp_test.txt"
         poi_file = data_dir + "Yelp_poi_coos.txt"
-        social_file = data_dir + "Yelp_social_relations.txt"
+        # social_file = data_dir + "Yelp_social_relations.txt"
+        social_file = data_dir + "/social_overlap/Social_train_more{}_yelp.txt".format(overlap_value)
 
     user_num, poi_num = open(size_file, 'r').readlines()[0].strip('\n').split()
     user_num, poi_num = int(user_num), int(poi_num)
@@ -261,4 +267,4 @@ if __name__ == '__main__':
     except OSError as e:
         pass
 
-    main("./result_{}_{}/".format(data_name, beta_value), "./tmp_{}_{}/".format(data_name,beta_value))
+    main("./result_{}_{}/".format(data_name, beta_value), "./tmp_{}_{}/".format(data_name, beta_value))
