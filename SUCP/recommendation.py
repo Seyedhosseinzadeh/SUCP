@@ -257,14 +257,16 @@ if __name__ == '__main__':
     TAMF = TimeAwareMF(K=100, Lambda=1.0, beta=2.0, alpha=2.0, T=24)
     LFBCA = LocationFriendshipBookmarkColoringAlgorithm(alpha=0.85, beta=float(beta_value), epsilon=0.001)
 
+    tmp_dir_name = "./tmp_{}_{}_{}".format(data_name, beta_value, overlap_value)
+    result_dir_name = "./result_{}_{}_{}".format(data_name, beta_value, overlap_value)
     try:
-        os.makedirs("./tmp_{}_{}".format(data_name, beta_value))
+        os.makedirs(tmp_dir_name)
     except OSError as e:
         pass
 
     try:
-        os.makedirs("./result_{}_{}".format(data_name, beta_value))
+        os.makedirs(result_dir_name)
     except OSError as e:
         pass
 
-    main("./result_{}_{}/".format(data_name, beta_value), "./tmp_{}_{}/".format(data_name, beta_value))
+    main(result_dir_name, tmp_dir_name)
