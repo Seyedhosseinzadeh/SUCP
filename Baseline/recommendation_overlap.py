@@ -45,11 +45,12 @@ def main(result_dir, temp_dir):
     LFBCA.precompute_rec_scores(training_matrix, social_matrix)
     LFBCA.save_result("./tmp/")
 
-    rec_list = open("./result/reclist_top_" + str(top_k) + ".txt", 'w')
-    result_5 = open("./result/result_top_" + str(5) + ".txt", 'w')
-    result_10 = open("./result/result_top_" + str(10) + ".txt", 'w')
-    result_15 = open("./result/result_top_" + str(15) + ".txt", 'w')
-    result_20 = open("./result/result_top_" + str(20) + ".txt", 'w')
+    rec_list = open(result_dir + "/reclist_top_" + str(top_k) + ".txt", 'w')
+    result_5 = open(result_dir + "/result_top_" + str(5) + ".txt", 'w')
+    result_20 = open(result_dir + "/result_top_" + str(20) + ".txt", 'w')
+    result_15 = open(result_dir + "/result_top_" + str(15) + ".txt", 'w')
+    result_10 = open(result_dir + "/result_top_" + str(10) + ".txt", 'w')
+
 
     all_uids = list(range(user_num))
     all_lids = list(range(poi_num))
