@@ -218,7 +218,6 @@ def main(result_dir, temp_dir):
 if __name__ == '__main__':
     data_name = sys.argv[1]  # which data to run
     beta_value = sys.argv[2]  # which beta value to use
-    overlap_value = sys.argv[3]  # which overlap value to use for social relationships
 
     print("======= RUNNING FOR BETA = ", beta_value, ", DATASET = ", data_name, ", SOCIAL CHECKIN OVERLAP = ",
           overlap_value, "========")
