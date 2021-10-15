@@ -6,9 +6,10 @@ Leveraging Social Influence based on Users Activity Centers for Point-of-Interes
 - You have to install the required libraries
 
 ## To run the code
-You need just run the `recommendation.py` and enter data-name and beta, like this: ' Gowalla 0.7 '
+You need just run the `recommendation.py` and enter data-name and beta, like this: ' gowalla 0.7 '
 
 - To change the dataset, you have to write its name in the `recommendation.py`.
+- Note that use 0.7 for the Gowalla beta and 0.8 for the Yelp betta, according to the paper.
 
 ## Cite
 Please cite our paper if you use our datasets or implementations:
