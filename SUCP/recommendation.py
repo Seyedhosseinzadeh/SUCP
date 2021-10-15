@@ -232,7 +232,7 @@ if __name__ == '__main__':
         tune_file = data_dir + "Gowalla_tune.txt"
         test_file = data_dir + "Gowalla_test.txt"
         poi_file = data_dir + "Gowalla_poi_coos.txt"
-        social_file = data_dir + "Gowalla_social_relations.txt"
+        social_file = data_dir + "Gowalla_social_relations_70.txt"
     else:
         data_dir = "../Dataset/Yelp/"
 
@@ -242,7 +242,7 @@ if __name__ == '__main__':
         tune_file = data_dir + "Yelp_tune.txt"
         test_file = data_dir + "Yelp_test.txt"
         poi_file = data_dir + "Yelp_poi_coos.txt"
-        social_file = data_dir + "Yelp_social_relations.txt"
+        social_file = data_dir + "Yelp_social_relations_70.txt"
 
     user_num, poi_num = open(size_file, 'r').readlines()[0].strip('\n').split()
     user_num, poi_num = int(user_num), int(poi_num)
