@@ -232,8 +232,7 @@ if __name__ == '__main__':
         tune_file = data_dir + "Gowalla_tune.txt"
         test_file = data_dir + "Gowalla_test.txt"
         poi_file = data_dir + "Gowalla_poi_coos.txt"
-        # social_file = data_dir + "Gowalla_social_relations.txt"
-        social_file = data_dir + "/social_overlap/Social_train_more{}_gowalla.txt".format(overlap_value)
+        social_file = data_dir + "Gowalla_social_relations.txt"
     else:
         data_dir = "../Dataset/Yelp/"
 
@@ -243,8 +242,7 @@ if __name__ == '__main__':
         tune_file = data_dir + "Yelp_tune.txt"
         test_file = data_dir + "Yelp_test.txt"
         poi_file = data_dir + "Yelp_poi_coos.txt"
-        # social_file = data_dir + "Yelp_social_relations.txt"
-        social_file = data_dir + "/social_overlap/Social_train_more{}_yelp.txt".format(overlap_value)
+        social_file = data_dir + "Yelp_social_relations.txt"
 
     user_num, poi_num = open(size_file, 'r').readlines()[0].strip('\n').split()
     user_num, poi_num = int(user_num), int(poi_num)
@@ -257,8 +255,8 @@ if __name__ == '__main__':
     TAMF = TimeAwareMF(K=100, Lambda=1.0, beta=2.0, alpha=2.0, T=24)
     LFBCA = LocationFriendshipBookmarkColoringAlgorithm(alpha=0.85, beta=float(beta_value), epsilon=0.001)
 
-    tmp_dir_name = "./tmp_{}_{}_{}/".format(data_name, beta_value, overlap_value)
-    result_dir_name = "./result_{}_{}_{}/".format(data_name, beta_value, overlap_value)
+    tmp_dir_name = "./tmp_{}_{}/".format(data_name, beta_value)
+    result_dir_name = "./result_{}_{}/".format(data_name, beta_value)
     try:
         os.makedirs(tmp_dir_name)
     except OSError as e:
