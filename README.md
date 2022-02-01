@@ -1,10 +1,10 @@
 # SUCP
-## Leveraging Social Influence based on Users Activity Centers for Point-of-Interest Recommendation (IP&M_2022)
+## Leveraging Social Influence based on Users Activity Centers for Point-of-Interest Recommendation (Information Processing & Management Journal_2022)
 
 
 Direct Friends (i.e., users who follow each other in an LBSN) and Distant Friends (i.e., users with commonly visited check-ins) usually have close opinions, even some friendships are made because of these behavioral similarities. Our analysis reveals the social behavior pattern of users for geographic activity centers. This paper proposes a new approach that examines user's preferences based on three contextual factors: geographical, social, and temporal information. we compare the performance of our SUCP with its variant, called SUCP-NoSocial. 
 
-you can read the [paper](https://arxiv.org/pdf/2201.03450.pdf) for more details
+you can read the [paper](https://www.sciencedirect.com/science/article/pii/S0306457321003290) for more details
 
 ## Environment Settings
 - Python version:  '2.7'
