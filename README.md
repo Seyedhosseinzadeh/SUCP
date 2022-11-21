@@ -20,7 +20,7 @@ You need just run the `recommendation.py` then enter data-name and beta value, l
 Please cite our paper if you use our datasets or implementations:
 
 
-This repository contains the implementation of Leveraging Social Influence based on Users Activity Centers for Point-of-Interest Recommendation presented in the IPM 2021 paper. 
+This repository contains the implementation of Leveraging Social Influence based on Users Activity Centers for Point-of-Interest Recommendation presented in the IPM 2022 paper. 
 
 # Contact
 If you have any questions, do not hesitate to contact us at 'kosar.seyedhosseinzadeh@gmail.com' or   'mohammad.aliannejadi@gmail.com', we will be happy to assist.
